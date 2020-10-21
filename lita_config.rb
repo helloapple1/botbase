@@ -39,12 +39,12 @@ Lita.configure do |config|
 #heroku uses a RACK_ENV of 'production' by default
 if ENV['RACK_ENV']=='production'
   config.robot.adapter=:slack
-  #config.redis[:url]=ENV.fetch('REDIS_URL')
-  config.redis[:url]=ENV.fetch('redis://h:p3b0367716aca36ce25b1779241754684109aa4421e23845e1ad85c3f6d203b13@ec2-23-21-82-81.compute-1.amazonaws.com:11959')
+  config.redis[:url]=ENV.fetch('REDIS_URL')
+  #config.redis[:url]=ENV.fetch('redis://h:p3b0367716aca36ce25b1779241754684109aa4421e23845e1ad85c3f6d203b13@ec2-23-21-82-81.compute-1.amazonaws.com:11959')
 else
   config.robot.adapter=:shell
 end
 #slack adapter demands a value even in dev when we aren't using it..
-#config.adapters.slack.token=ENV.fetch('SLACK_TOKEN','')
-config.adapters.slack.token=ENV.fetch('xoxb-1447072035412-1434198094534-q9uq1SZko5yqBRGzhdTEYyh0','')
+config.adapters.slack.token=ENV.fetch('SLACK_TOKEN','')
+#config.adapters.slack.token=ENV.fetch('xoxb-1447072035412-1434198094534-q9uq1SZko5yqBRGzhdTEYyh0','')
 end
