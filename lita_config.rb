@@ -31,14 +31,12 @@ Lita.configure do |config|
   ## documentation for options.
   # config.handlers.some_handler.some_config_key = "value"
 
-config.robot.adapter = :slack
-config.adapters.slack.token = "xoxb-1447072035412-1434198094534-q9uq1SZko5yqBRGzhdTEYyh0"
 
 #The adapter you want to connect whith.Make sure you've added the
 #appropriate gem to the Gemfile.
 #heroku uses a RACK_ENV of 'production' by default
 if ENV['RACK_ENV']=='production'
-  config.robot.adapter=:slack
+  config.robot.adapter = :slack
   config.redis[:url]=ENV.fetch('REDIS_URL')
   #config.redis[:url]=ENV.fetch('redis://h:p3b0367716aca36ce25b1779241754684109aa4421e23845e1ad85c3f6d203b13@ec2-23-21-82-81.compute-1.amazonaws.com:11959')
 else
@@ -46,5 +44,8 @@ else
 end
 #slack adapter demands a value even in dev when we aren't using it..
 config.adapters.slack.token=ENV.fetch('SLACK_TOKEN','')
+
+config.robot.adapter = :slack
+config.adapters.slack.token = "xoxb-1447072035412-1434198094534-nH7KMnHQ8nmoeNTT5M017Fq5"
 #config.adapters.slack.token=ENV.fetch('xoxb-1447072035412-1434198094534-q9uq1SZko5yqBRGzhdTEYyh0','')
 end
