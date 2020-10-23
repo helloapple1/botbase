@@ -8,8 +8,8 @@ Lita.configure do |config|
   # The severity of messages to log. Options are:
   # :debug, :info, :warn, :error, :fatal
   # Messages at the selected level and above will be logged.
-  config.robot.log_level = :info
-
+  #config.robot.log_level = :info
+  config.robot.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym
   # An array of user IDs that are considered administrators. These users
   # the ability to add and remove other users from authorization groups.
   # What is considered a user ID will change depending on which adapter you use.
@@ -45,7 +45,7 @@ end
 #slack adapter demands a value even in dev when we aren't using it..
 config.adapters.slack.token=ENV.fetch('SLACK_TOKEN','')
 
-config.robot.log_level = ENV.fetch('LOG_LEVEL', 'info').to_sym
+
 #config.robot.adapter = :slack
 #config.adapters.slack.token = "xoxb-1447072035412-1434198094534-1490xwWbyJA89hOm0AA9j9wt"
 #config.adapters.slack.token=ENV.fetch('xoxb-1447072035412-1434198094534-q9uq1SZko5yqBRGzhdTEYyh0','')
